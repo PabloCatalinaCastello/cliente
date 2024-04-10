@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="report_selected_issues">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 class="mt-4">Selected Issues</h2>
+                    <table class="table table-sm o_main_table table-borderless mt-4">
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_name" class="text-start">Name</th>
+                                <th name="th_date" class="text-start">Date</th>
+                                <th name="th_date" class="text-start">User</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_cbody">
+                            <t t-foreach="docs" t-as="o">
+                                <tr>
+                                    <td name="td_name" class="text-start">
+                                        <span t-field="o.name"/>
+                                    </td>
+                                    <td name="td_date" class="text-start">
+                                        <span t-field="o.date"/>
+                                    </td>
+                                    <td name="td_user" class="text-start">
+                                        <span t-field="o.user_id"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_selected_issues" model="ir.actions.report">
+        <field name="name">Selected Issues</field>
+        <field name="model">sport.issue</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sports_association.report_selected_issues</field>
+        <field name="report_file">sports_association.report_selected_issues</field>
+        <field name="print_report_name">Selected Issues</field>
+        <field name="binding_model_id" ref="model_sport_issue"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

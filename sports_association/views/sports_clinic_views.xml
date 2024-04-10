@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- sport_clinic tree view -->
+    <record id="sport_clinic_view_tree" model="ir.ui.view">
+        <field name="name">sport_clinic.view.tree</field>
+        <field name="model">sport.clinic</field>
+        <field name="arch" type="xml">
+            <tree string="Clinics">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="available" widget="boolean_toggle"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- sport_clinic form view -->
+    <record id="sport_clinic_view_form" model="ir.ui.view">
+        <field name="name">sport_clinic.view.form</field>
+        <field name="model">sport.clinic</field>
+        <field name="arch" type="xml">
+            <form string="Clinic">
+                <header>
+                    <button name="action_check_assistance" type="object" string="Check Assistance" class="btn-success"/>
+                    <button name="%(action_sport_create_issue)d" type="action" context="{'default_clinic_id' : active_id}" string="Create Issue" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <!-- smartbutton for issue-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_issues" type="object" context="{'default_clinic_id': id, 'search_default_state': 'draft'}" string="Issues" class="oe_stat_button" icon="fa-stethoscope">
+                            <field name="issue_cont" string="Issues" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="available" widget="boolean_toggle"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                    </group>
+                    <notebook>
+                        <page string="issue" name="Issue">
+                            <field name="issue_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="assistance" widget="boolean_toggle"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- sport_team tree view -->
+    <record id="sport_team_view_tree" model="ir.ui.view">
+        <field name="name">sport_team.view.tree</field>
+        <field name="model">sport.team</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name" />
+                <field name="sport_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- sport_team form view -->
+    <record id="sport_team_view_form" model="ir.ui.view">
+        <field name="name">sport_team.view.form</field>
+        <field name="model">sport.team</field>
+        <field name="arch" type="xml">
+            <form string="Player">
+                <header>
+                    <button name="action_make_all_starter" type="object" string="Mark Players Starters" class="btn-success"/>
+                    <button name="action_make_all_subtitutes" type="object" string="Mark Players Subtitutes" class="btn-danger"/>
+                    
+                    <button name="action_add_players" type="object" string="Add Players" class="btn-warning"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_players" type="object" string="Players" class="oe_stat_button" icon="fa-users">
+                            <field name="player_count" string="Players" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <di class="oe_title">
+                        <h1>
+                            <field name="name" placeolder="Issue" />
+                        </h1>
+                    </di>
+
+                    <group>
+                        <field name="sport_id"/>
+                        <field name="player_count"/>
+                    </group>
+
+                    <notebook> <!--Vista Enbebida-->
+                        <page string="Players" name="players">
+                            <!-- <field name="player_ids" context="{'default_position':'Delantero'}">
+                                <tree editable="bottom">
+                                    <field name="name" />
+                                    <field name="age" />
+                                    <field name="position"/>
+                                    <field name="starter" widget="boolean_toggle" />
+                                </tree>
+                            </field> -->
+                            <field name="player_ids" context="{'tree_view_ref':'sports_association.sport_player_view_simple_tree',
+                                                             'form_view_ref':'sports_association.sport_player_views_simple_form'}" priority='100'/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- sport_team kanban view -->
+    <record id="sport_team_view_kanban" model="ir.ui.view">
+        <field name="name">sport_team.view.kanban</field>
+        <field name="model">sport.team</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="sport_id">
+                <field name="name"/>
+                <field name="logo"/>
+                <field name="player_count"/>
+                <template>
+                    <t t-name="kanban-menu">
+                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                        <!-- <ul class="oe_kanban_colorpicker" data-field="color"/> -->
+                    </t>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click oe_kanban_card d-flex flex-column">
+                            <div class="oe_kanban_content flex-grow-1">
+                                <div>
+                                    <field name="logo" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="player_count"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </template>                
+            </kanban>
+        </field>
+    </record>
+</odoo>

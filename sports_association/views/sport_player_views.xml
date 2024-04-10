@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- sport_player tree view -->
+    <record id="sport_player_view_tree" model="ir.ui.view">
+        <field name="name">sport_player.view.tree</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name" />
+                <field name="birth_date"/>
+                <field name="age" />
+                <field name="position" />
+                <field name="team_id" />
+                <field name="starter" widget="boolean_toggle" />
+            </tree>
+        </field>
+    </record>
+
+                    <!-- Simple View Player -->
+
+    <record id="sport_player_view_simple_tree" model="ir.ui.view">
+        <field name="name">sport_player.view.simple.tree</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="age" />
+                <field name="starter" widget="boolean_toggle" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- sport_player form view -->
+    <record id="sport_player_view_form" model="ir.ui.view">
+        <field name="name">sport_player.view.form</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <form string="Player">
+                <header>
+                    <button name="%(action_sport_create_issue)d" type="action" context="{'default_player_id' : active_id}" string="Create Issue" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="birth_date"/>
+                            <field name="age" />
+                            <field name="position" />
+                        </group>
+                        <group>
+                            <field name="team_id" domain="[('sport_id', '!=', False)]"/>
+                            <field name="sport_team"/>
+                            <field name="starter" widget="boolean_toggle" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+     <!-- Simple View From Player-->
+     <record id="sport_player_views_simple_form" model="ir.ui.view">
+        <field name="name">sport_player.view.simple.form</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <form string="Player">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="birth_date"/>
+                            <field name="age" />
+                        </group>
+                        <group>
+                            <field name="starter" widget="boolean_toggle" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- sport_player search view -->
+    <record id="sport_player_view_search" model="ir.ui.view">
+        <field name="name">sport_player.view.search</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <search string="Players">
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="sport_team"/>
+                <filter name="starter" string="Starter" domain="[('starter', '=', True)]"></filter>
+                <filter name="non_starter" string="Non Starter" domain="[('starter', '=', False)]"></filter>
+                <filter name="team_id" string="Team" context="{'group_by':'team_id'}"></filter>
+                <filter name="birth_date" string="Birth Date" context="{'group_by':'birth_date'}"></filter>
+                <filter name="sport" string="Sport" context="{'group_by':'sport_team'}"></filter>
+
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Menu Sport Issue-->
+    <record id="action_sport_issue" model="ir.actions.act_window">
+        <field name="name">Sport Issues</field>
+        <field name="res_model">sport.issue</field>
+        <field name="view_mode">tree,form,kanban,pivot,graph,calendar</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product
+            </p>
+        </field>
+    </record>
+
+    <!--Menu Sport Clinic-->
+    <record id="action_sport_clinic" model="ir.actions.act_window">
+        <field name="name">Sport Clinics</field>
+        <field name="res_model">sport.clinic</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new clinic
+            </p>
+        </field>
+    </record>
+
+    <!--Menu Sport Issue Tag-->
+    <record id="action_sport_issue_tag" model="ir.actions.act_window">
+        <field name="name">Sport Issues Tags</field>
+        <field name="res_model">sport.issue.tag</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new tag
+            </p>
+        </field>
+    </record>
+    <!--Menu Sport Team-->
+    <record id="action_sport_team" model="ir.actions.act_window">
+        <field name="name">Sports Teams</field>
+        <field name="res_model">sport.team</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Team
+            </p>
+        </field>
+    </record>
+
+    <!--Menu Sport Sport-->
+    <record id="action_sport_sport" model="ir.actions.act_window">
+        <field name="name">Sports</field>
+        <field name="res_model">sport.sport</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Sport
+            </p>
+        </field>
+    </record>
+
+    <!--Menu Sport Player-->
+    <record id="action_sport_player" model="ir.actions.act_window">
+        <field name="name">Sports Players</field>
+        <field name="res_model">sport.player</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Player
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Sport League-->
+    <record id="action_sport_league" model="ir.actions.act_window">
+        <field name="name">Sports League</field>
+        <field name="res_model">sport.league</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new League
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Sport Match-->
+    <record id="action_sport_match" model="ir.actions.act_window">
+        <field name="name">Sports Match</field>
+        <field name="res_model">sport.match</field>
+        <field name="view_mode">tree,form,pivot,graph,calendar</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Match
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Sport Ticket-->
+    <record id="action_sport_ticket" model="ir.actions.act_window">
+        <field name="name">Sports Tocket</field>
+        <field name="res_model">sport.ticket</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ticket
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="sport_menu" name="Sport Associations" sequence="10" />
+
+    <menuitem id="sport_issue_management_menu" name="Issue Management" sequence="10" parent="sport_menu" />
+    <menuitem id="sport_sport_management_menu" name="Sport Management" sequence="10" parent="sport_menu" />
+
+
+
+    <menuitem id="sport_issue_menu" name="Sport Issues" action="action_sport_issue" parent="sport_issue_management_menu" sequence="10" />
+
+    <menuitem id="sport_clinic_menu" name="Sport Clinic" action="action_sport_clinic" parent="sport_menu" sequence="20"/>
+
+    <menuitem id="sport_issue_tag_menu" name="Sport Issue Tag" action="action_sport_issue_tag" parent="sport_issue_management_menu" sequence="30"/>
+    
+    <menuitem id="sport_team_menu" name="Sport Team" action="action_sport_team" parent="sport_sport_management_menu" sequence="40"/>
+
+    <menuitem id="sport_sport_menu" name="Sport" action="action_sport_sport" parent="sport_sport_management_menu" sequence="50"/>
+
+    <menuitem id="sport_player_menu" name="Sport Player" action="action_sport_player" parent="sport_sport_management_menu" sequence="60"/>
+    
+    <menuitem id="sport_league_menu" name="League" action="action_sport_league" parent="sport_sport_management_menu" sequence="70"/>
+
+    <menuitem id="sport_match_menu" name="Match" action="action_sport_match" parent="sport_sport_management_menu" sequence="80"/>
+
+    <menuitem id="sport_ticket_menu" name="Ticket" action="action_sport_ticket" parent="sport_sport_management_menu" sequence="90"/>
+
+</odoo>

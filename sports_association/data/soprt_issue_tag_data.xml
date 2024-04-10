@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="sport_issue_tag_data_1" model="sport.issue.tag">
+            <field name="name">Prevención</field>
+        </record>
+        <record id="sport_issue_tag_data_2" model="sport.issue.tag">
+            <field name="name">Salud</field>
+        </record>
+        <record id="sport_issue_tag_data_3" model="sport.issue.tag">
+            <field name="name">Enfermedades</field>
+        </record>
+        <record id="sport_issue_tag_data_4" model="sport.issue.tag">
+            <field name="name">Neurologia</field>
+        </record>
+        <record id="sport_issue_tag_data_5" model="sport.issue.tag">
+            <field name="name">Oncologia</field>
+        </record>
+        <record id="sport_issue_tag_data_6" model="sport.issue.tag">
+            <field name="name">Cardiologia</field>
+        </record>
+        <record id="sport_issue_tag_data_7" model="sport.issue.tag">
+            <field name="name">Ginecologia</field>
+        </record>
+        <record id="sport_issue_tag_data_8" model="sport.issue.tag">
+            <field name="name">Pediatria</field>
+        </record>
+        <record id="sport_issue_tag_data_9" model="sport.issue.tag">
+            <field name="name">Nutrición</field>
+        </record>
+        <record id="sport_issue_tag_data_10" model="sport.issue.tag">
+            <field name="name">CuidadosPaliativos</field>
+        </record>
+    </data>
+</odoo>
